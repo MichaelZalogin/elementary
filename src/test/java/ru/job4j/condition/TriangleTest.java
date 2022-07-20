@@ -16,7 +16,7 @@ public class TriangleTest {
 
     @Test
     public void whenNoExist() {
-        double ab = 4.0;
+        double ab = 6.0;
         double ac = 2.0;
         double bc = 2.0;
         boolean result = Triangle.exist(ab, ac, bc);
