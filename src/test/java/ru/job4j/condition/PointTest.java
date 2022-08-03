@@ -49,4 +49,22 @@ public class PointTest {
         double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
+
+    @Test
+    public void when5912to121923then16dot432() {
+        double expected = 16.432;
+        Point first = new Point(5, 9, 12);
+        Point second = new Point(12, 19, 23);
+        double out = first.distance3d(second);
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    public void when121932to546573then72dot925() {
+        double expected = 72.925;
+        Point first = new Point(15, 19, 32);
+        Point second = new Point(54, 65, 73);
+        double out = first.distance3d(second);
+        Assert.assertEquals(expected, out, 0.01);
+    }
 }
