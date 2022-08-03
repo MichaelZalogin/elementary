@@ -7,56 +7,46 @@ public class PointTest {
 
     @Test
     public void when00to20then2() {
-        double expected = 2;
-        int x1 = 0;
-        int y1 = 0;
-        int x2 = 2;
-        int y2 = 0;
-        double out = Point.distance(x1, y1, x2, y2);
+        double expected = 2.0;
+        Point first = new Point(0, 0);
+        Point second = new Point(0, 2);
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when01to20then2dot23() {
         double expected = 2.23;
-        int x1 = 0;
-        int y1 = 1;
-        int x2 = 2;
-        int y2 = 0;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point first = new Point(0, 1);
+        Point second = new Point(2, 0);
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when11to52then4dot123() {
         double expected = 4.123;
-        int x1 = 1;
-        int y1 = 1;
-        int x2 = 5;
-        int y2 = 2;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point first = new Point(1, 1);
+        Point second = new Point(5, 2);
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when17to53then5dot656() {
-        double expected = 5.656;
-        int x1 = 1;
-        int y1 = 7;
-        int x2 = 5;
-        int y2 = 3;
-        double out = Point.distance(x1, y1, x2, y2);
+        double expected = 4.47;
+        Point first = new Point(1, 1);
+        Point second = new Point(3, 5);
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when59to1219then12dot2() {
         double expected = 12.2;
-        int x1 = 5;
-        int y1 = 9;
-        int x2 = 12;
-        int y2 = 19;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point first = new Point(5, 9);
+        Point second = new Point(12, 19);
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 }
