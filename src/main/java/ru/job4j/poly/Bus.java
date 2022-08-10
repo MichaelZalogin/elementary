@@ -9,16 +9,17 @@ public class Bus implements Transport, Vehicle {
 
     @Override
     public void drive() {
-
+        System.out.println("Drive");
     }
 
     @Override
     public void passengers(int passenger) {
-
+        System.out.println("passengers");
     }
 
     @Override
-    public double refuel(int fuel) {
-        return 0;
+    public int refuel(int fuel) {
+        System.out.println("full");
+        return fuel;
     }
 }
