@@ -1,10 +1,7 @@
 package ru.job4j.ex;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordValidatorTest {
 
@@ -51,9 +48,9 @@ class PasswordValidatorTest {
     }
 
     @Test
-    public void whenPasswordVerySimple() {
+    public void whenPasswordContainsSimpleCombinations() {
         String result = PasswordValidator.validate("QweRty123#");
-        String expected = "Пароль должен быть сложнее";
+        String expected = "Пароль не должен содержать в себе простые пароли";
         assertThat(expected).isEqualTo(result);
     }
 

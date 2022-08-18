@@ -36,9 +36,9 @@ public class PasswordValidator {
 
     public static boolean findPrimitivePass(String primitivePassword) {
         primitivePassword = primitivePassword.toLowerCase();
-        String[] primitivePasswords = {"qwerty123#", "123456789", "password"};
-        for (int i = 0; i < primitivePasswords.length; i++) {
-            if (primitivePassword.equals(primitivePasswords[i])) {
+        String[] primitiveCombination = {"qwerty", "12345", "password", "admin", "user"};
+        for (int i = 0; i < primitiveCombination.length; i++) {
+            if (primitivePassword.contains(primitiveCombination[i])) {
                 return true;
             }
         }
@@ -83,14 +83,9 @@ public class PasswordValidator {
         }
 
         if (findPrimitivePass(password)) {
-            return "Пароль должен быть сложнее";
+            return "Пароль не должен содержать в себе простые пароли";
         }
 
         return password;
-    }
-
-    public static void main(String[] args) {
-        String s = "QweRty123#";
-        System.out.println(validate(s));
     }
 }
