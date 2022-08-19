@@ -1,58 +1,88 @@
 package ru.job4j.ex;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PasswordValidatorTest {
 
     @Test
     public void whenLengthLess8() {
-        String result = PasswordValidator.validate("dwW3re");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("dwW3re");
+                });
         String expected = "Длина пароля должна находится в диапазоне от 8 до 32 символов";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenLengthMore32() {
-        String result = PasswordValidator.validate("dewfewe3fewdewfewe3fewdewfewe3fewewq");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("dewfewe3fewdewfewe3fewdewfewe3fewewq");
+                });
         String expected = "Длина пароля должна находится в диапазоне от 8 до 32 символов";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenNonUpperSymbol() {
-        String result = PasswordValidator.validate("somewords");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("somewords");
+                });
         String expected = "Пароль должен содержать хотя бы один символ в верхнем регистре";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenNonLowerSymbol() {
-        String result = PasswordValidator.validate("SOMEWORDS");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("SOMEWORDS");
+                });
         String expected = "Пароль должен содержать хотя бы один символ в нижнем регистре";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenNotContainsDigits() {
-        String result = PasswordValidator.validate("SOMEWfewfew");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("SOMEWfewfew");
+                });
         String expected = "Пароль должен содержать хотя бы одну цифру";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenNotContainsSpecialSymbol() {
-        String result = PasswordValidator.validate("SOMEWfewfew32");
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("SOMEWfewfew32");
+                });
         String expected = "Пароль должен содержать хотя бы один специальный символ";
-        assertThat(expected).isEqualTo(result);
+        assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
     @Test
     public void whenPasswordContainsSimpleCombinations() {
-        String result = PasswordValidator.validate("QweRty123#");
-        String expected = "Пароль не должен содержать в себе простые пароли";
-        assertThat(expected).isEqualTo(result);
-    }
+    IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                PasswordValidator.validate("QweRty123#");
+            });
+    String expected = "Пароль не должен содержать в себе простые пароли";
+    assertThat(exception.getMessage()).isEqualTo(expected);
+}
 
     @Test
     public void whenPasswordAsserted() {

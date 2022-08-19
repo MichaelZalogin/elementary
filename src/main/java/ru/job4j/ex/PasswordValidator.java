@@ -59,31 +59,31 @@ public class PasswordValidator {
     public static String validate(String password) {
 
         if (password == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Пароль не введен");
         }
 
         if (password.length() > 33 || password.length() < 7) {
-            return "Длина пароля должна находится в диапазоне от 8 до 32 символов";
+            throw new IllegalArgumentException("Длина пароля должна находится в диапазоне от 8 до 32 символов");
         }
 
         if (!findUpperSymbol(password)) {
-            return "Пароль должен содержать хотя бы один символ в верхнем регистре";
+            throw new IllegalArgumentException("Пароль должен содержать хотя бы один символ в верхнем регистре");
         }
 
         if (!findLowerSymbol(password)) {
-            return "Пароль должен содержать хотя бы один символ в нижнем регистре";
+            throw new IllegalArgumentException("Пароль должен содержать хотя бы один символ в нижнем регистре");
         }
 
         if (!findDigits(password)) {
-            return "Пароль должен содержать хотя бы одну цифру";
+            throw new IllegalArgumentException("Пароль должен содержать хотя бы одну цифру");
         }
 
         if (!findSpecialSymbols(password)) {
-            return "Пароль должен содержать хотя бы один специальный символ";
+            throw new IllegalArgumentException("Пароль должен содержать хотя бы один специальный символ");
         }
 
         if (findPrimitivePass(password)) {
-            return "Пароль не должен содержать в себе простые пароли";
+            throw new IllegalArgumentException("Пароль не должен содержать в себе простые пароли");
         }
 
         return password;
