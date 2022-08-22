@@ -12,5 +12,10 @@ public class CollectionUsage {
         for (String str : collection) {
             System.out.println(str);
         }
+        Collection<String> list = new ArrayList<>();
+        list.addAll(collection);
+        for (String str : list) {
+            System.out.println(str);
+        }
     }
 }
