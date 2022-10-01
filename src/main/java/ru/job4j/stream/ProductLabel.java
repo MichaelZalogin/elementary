@@ -7,7 +7,7 @@ public class ProductLabel {
     public List<String> generateLabels(List<Product> products) {
         return products.stream()
                 .filter(el -> el.getStandard() - el.getActual() < 4)
-                .filter(el -> el.getStandard() - el.getActual() > 0)
+                .filter(el -> el.getStandard() - el.getActual() >= 0)
                 .map(el -> new Label(el.getName(), (el.getPrice()) / 2).toString()).
                 collect(Collectors.toList());
     }
