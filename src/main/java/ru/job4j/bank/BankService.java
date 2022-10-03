@@ -18,6 +18,7 @@ public class BankService {
 
     /**
      * Добавляет нового пользователя в справочник, если дубликаты отсутствуют
+     *
      * @param user
      */
     public void addUser(User user) {
@@ -38,42 +39,38 @@ public class BankService {
 
     /**
      * Поиск пользователя в справочнике по номеру его паспорта.
+     *
      * @param passport в параметры принимает номер паспорта пользователя.
      * @return возвращает найденого User или null если пользователь не найден.
      */
     public User findByPassport(String passport) {
-        User tmp = null;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                tmp = user;
-                break;
-            }
-        }
-        return tmp;
+        return users.keySet().stream()
+                .filter(s -> s.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
      * Поиск аккаунта пользователя по его реквизитам.
+     *
      * @param passport  в параметры принимает номер паспорта пользователя
      * @param requisite и реквизиты его счета
      * @return возвращает найденый Ассount пользователя или null если аккаунта не существует.
      */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        Account tmp = null;
         if (user != null) {
-            for (Account account : users.get(user)) {
-                if (account.getRequisite().equals(requisite)) {
-                    tmp = account;
-                    break;
-                }
-            }
+            return users.get(user).stream()
+                    .filter(s -> s.getRequisite()
+                            .equals(requisite))
+                    .findFirst().orElse(null);
         }
-        return tmp;
+        return null;
     }
 
     /**
      * Осуществляет денежный перевод между двумя пользователями.
+     *
      * @param amount отражает сумму перевода.
      *               Возможность перевода определяется наличием аккаунтов {@link #findByRequisite(String, String)}
      *               и наличием необходимой суммы на счете.
