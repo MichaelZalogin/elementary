@@ -8,7 +8,7 @@ public class AnalyzeByMap {
         int count = 0;
         double grade = 0;
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
+            for (Subject2 subject : pupil.subjects()) {
                 grade += subject.score();
                 count++;
             }
@@ -21,7 +21,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             double count = 0;
             double grade = 0;
-            for (Subject subject : pupil.subjects()) {
+            for (Subject2 subject : pupil.subjects()) {
                 grade += subject.score();
                 count++;
             }
@@ -34,7 +34,7 @@ public class AnalyzeByMap {
         LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
+            for (Subject2 subject : pupil.subjects()) {
                 if (lhm.containsKey(subject.name())) {
                     lhm.put(subject.name(), lhm.get(subject.name()) + subject.score());
                 } else {
@@ -53,7 +53,7 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             double grade = 0;
-            for (Subject subject : pupil.subjects()) {
+            for (Subject2 subject : pupil.subjects()) {
                 grade += subject.score();
             }
             labels.add(new Label(pupil.name(), grade));
@@ -66,7 +66,7 @@ public class AnalyzeByMap {
         LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
+            for (Subject2 subject : pupil.subjects()) {
                 if (lhm.containsKey(subject.name())) {
                     lhm.put(subject.name(), lhm.get(subject.name()) + subject.score());
                 } else {
