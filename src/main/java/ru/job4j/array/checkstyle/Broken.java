@@ -13,10 +13,10 @@ public class Broken {
     Broken() {
     }
 
-    void echo() {
+    public void echo() {
     }
 
-    void media(Object obj) {
+    public void media(Object obj) {
         if (obj != null) {
             System.out.println(obj);
         }
